@@ -258,7 +258,7 @@ enum URLBuilder {
 
 
 #Preview {
-    AppsView(requesrBaseURL: "https://files.endlessai.org",requestJsonName: "whiteboard_apps.json"){ active in
+    AppsView(requesrBaseURL: "https://files.endlessai.org",requestJsonName: "linguo_apps.json"){ active in
         
         print("active",active)
     }
