@@ -90,12 +90,17 @@ public struct AppsView: View {
     @ViewBuilder
     private func triggerButton(_ triggerView: AnyView) -> some View {
         if viewModel.appsModel?.active == true {
+            
+           
+            
+           
             Button(action: { isPresentingList = true }) {
                 triggerView
             }
             .buttonStyle(PlainButtonStyle())
+            
         } else {
-            Color.clear
+            Color.secondary.opacity(0.3)
                 .frame(width: 2, height: 2)
         }
     }
@@ -327,18 +332,22 @@ enum URLBuilder {
 
 #Preview {
     if #available(iOS 14.0, *) {
-        AppsView(requesrBaseURL: "https://files.endlessai.org",requestJsonName: "linguo_apps.json",triggerView: AnyView(HStack{
-            Image(uiImage: LocalizedInfo.Logo)
-                .resizable()
-                .scaledToFit()
-                .frame(maxWidth:30)
-            Text(LocalizedInfo.Name)
-        })){ active in
+        AppsKit.AppsView(requesrBaseURL: "https://files.whiteboardapp.cn", requestJsonName: "whiteboard_apps.json", triggerView: AnyView(
+            
+            HStack{
+                
+                Image(uiImage: AppsKit.LocalizedInfo.Logo)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth:22)
+                
+                Text(AppsKit.LocalizedInfo.Name)
+                
+            }
+        )){ active in
             
             print("active",active)
             
         }
-    } else {
-        // Fallback on earlier versions
     }
 }
