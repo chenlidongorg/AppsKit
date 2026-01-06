@@ -48,7 +48,7 @@ public struct AppsView: View {
             }
         }
         .onAppear {
-            
+            print("load(baseURL onAppear ")
             viewModel.load(baseURL: requesrBaseURL, jsonName: requestJsonName)
         }
         .onReceive(viewModel.$appsModel.compactMap { $0?.active }.removeDuplicates()) { value in
@@ -96,15 +96,13 @@ public struct AppsView: View {
     private func triggerButton(_ triggerView: AnyView) -> some View {
         if viewModel.appsModel?.active == true {
             
-           
-            
-           
             Button(action: { isPresentingList = true }) {
                 triggerView
             }
             .buttonStyle(PlainButtonStyle())
             
         } else {
+            
             Color.secondary.opacity(0.3)
                 .frame(width: 2, height: 2)
         }
@@ -140,6 +138,8 @@ final class AppsViewModel: ObservableObject {
     private let decodeQueue = DispatchQueue(label: "AppsKit.AppsViewModel.decode", qos: .userInitiated)
 
     func load(baseURL: String, jsonName: String) {
+        
+        print("load(baseURL 1",baseURL ,jsonName)
         guard state != .loading else { return }
         guard let url = URLBuilder.jsonURL(baseURL: baseURL, jsonName: jsonName) else {
             state = .failed("Invalid JSON URL")
@@ -147,6 +147,8 @@ final class AppsViewModel: ObservableObject {
             return
         }
 
+        print("load(baseURL 2", url)
+        
         state = .loading
         cancellable?.cancel()
 
