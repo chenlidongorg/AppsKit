@@ -9,7 +9,7 @@ public struct AppsView: View {
     private let triggerView: AnyView?
     private let onActive: (Bool) -> Void
 
-    @ObservedObject private var viewModel: AppsViewModel
+    @StateObject private var viewModel: AppsViewModel
     @Environment(\.presentationMode) private var presentationMode
     @State private var isPresentingList = false
 
@@ -23,7 +23,7 @@ public struct AppsView: View {
         self.requestJsonName = requestJsonName
         self.triggerView = triggerView
         self.onActive = onActive
-        _viewModel = ObservedObject(wrappedValue: AppsViewModel())
+        _viewModel = StateObject(wrappedValue: AppsViewModel())
     }
 
     public init<Trigger: View>(
@@ -36,7 +36,7 @@ public struct AppsView: View {
         self.requestJsonName = requestJsonName
         self.triggerView = AnyView(triggerView())
         self.onActive = onActive
-        _viewModel = ObservedObject(wrappedValue: AppsViewModel())
+        _viewModel = StateObject(wrappedValue: AppsViewModel())
     }
 
     public var body: some View {
