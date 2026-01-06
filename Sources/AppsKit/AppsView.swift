@@ -2,48 +2,116 @@ import SwiftUI
 import Combine
 import UIKit
 
+@available(iOS 14.0, *)
 public struct AppsView: View {
     private let requesrBaseURL: String
     private let requestJsonName: String
+    private let triggerView: AnyView?
     private let onActive: (Bool) -> Void
 
     @ObservedObject private var viewModel: AppsViewModel
+    @Environment(\.presentationMode) private var presentationMode
+    @State private var isPresentingList = false
 
     public init(
         requesrBaseURL: String = "https://xxx.com",
         requestJsonName: String = "xxx.json",
+        triggerView: AnyView? = nil,
         onActive: @escaping (Bool) -> Void = { _ in }
     ) {
         self.requesrBaseURL = requesrBaseURL
         self.requestJsonName = requestJsonName
+        self.triggerView = triggerView
+        self.onActive = onActive
+        _viewModel = ObservedObject(wrappedValue: AppsViewModel())
+    }
+
+    public init<Trigger: View>(
+        requesrBaseURL: String = "https://xxx.com",
+        requestJsonName: String = "xxx.json",
+        @ViewBuilder triggerView: () -> Trigger,
+        onActive: @escaping (Bool) -> Void = { _ in }
+    ) {
+        self.requesrBaseURL = requesrBaseURL
+        self.requestJsonName = requestJsonName
+        self.triggerView = AnyView(triggerView())
         self.onActive = onActive
         _viewModel = ObservedObject(wrappedValue: AppsViewModel())
     }
 
     public var body: some View {
         Group {
-            switch viewModel.state {
-            case .loading:
-                LoadingView()
-            case .failed(let message):
-                ErrorView(message: message) {
-                    viewModel.load(baseURL: requesrBaseURL, jsonName: requestJsonName)
-                }
-            case .idle:
-                if let model = viewModel.appsModel, model.active {
-                    AppsListView(apps: model.apps, baseURL: requesrBaseURL)
-                } else if viewModel.appsModel != nil {
-                    EmptyView()
-                } else {
-                    LoadingView()
-                }
+            if let triggerView = triggerView {
+                triggerButton(triggerView)
+            } else {
+                appsNavigationView
             }
+        }
+        .sheet(isPresented: $isPresentingList) {
+            appsNavigationView
         }
         .onAppear {
             viewModel.load(baseURL: requesrBaseURL, jsonName: requestJsonName)
         }
         .onReceive(viewModel.$appsModel.compactMap { $0?.active }.removeDuplicates()) { value in
             onActive(value)
+        }
+    }
+
+    private var appsNavigationView: some View {
+        NavigationView {
+            appsContent
+                .navigationBarTitle(LocalizedInfo.Name, displayMode: .inline)
+                .navigationBarItems(leading: closeButton)
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
+    }
+
+    @ViewBuilder
+    private var appsContent: some View {
+        switch viewModel.state {
+        case .loading:
+            LoadingView()
+        case .failed(let message):
+            ErrorView(message: message) {
+                viewModel.load(baseURL: requesrBaseURL, jsonName: requestJsonName)
+            }
+        case .idle:
+            if let model = viewModel.appsModel, model.active {
+                AppsListView(apps: model.apps, baseURL: requesrBaseURL)
+            } else if viewModel.appsModel != nil {
+                EmptyView()
+            } else {
+                LoadingView()
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func triggerButton(_ triggerView: AnyView) -> some View {
+        if viewModel.appsModel?.active == true {
+            Button(action: { isPresentingList = true }) {
+                triggerView
+            }
+            .buttonStyle(PlainButtonStyle())
+        } else {
+            Color.clear
+                .frame(width: 2, height: 2)
+        }
+    }
+
+    private var closeButton: some View {
+        Button(action: close) {
+            Image(systemName: "xmark")
+                .foregroundColor(Color(red: 0.1, green: 0.12, blue: 0.16))
+        }
+    }
+
+    private func close() {
+        if isPresentingList {
+            isPresentingList = false
+        } else {
+            presentationMode.wrappedValue.dismiss()
         }
     }
 }
@@ -258,9 +326,19 @@ enum URLBuilder {
 
 
 #Preview {
-    AppsView(requesrBaseURL: "https://files.endlessai.org",requestJsonName: "linguo_apps.json"){ active in
-        
-        print("active",active)
+    if #available(iOS 14.0, *) {
+        AppsView(requesrBaseURL: "https://files.endlessai.org",requestJsonName: "linguo_apps.json",triggerView: AnyView(HStack{
+            Image(uiImage: LocalizedInfo.Logo)
+                .resizable()
+                .scaledToFit()
+                .frame(maxWidth:30)
+            Text(LocalizedInfo.Name)
+        })){ active in
+            
+            print("active",active)
+            
+        }
+    } else {
+        // Fallback on earlier versions
     }
 }
-
