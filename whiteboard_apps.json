@@ -1,0 +1,29 @@
+{
+  "Active": true,
+  "apps": [
+    {
+      "iconName": "id496465537.png",
+      "downloadURL": "https://apps.apple.com/app/id496465537",
+      "name": {
+        "en": "Whiteboard",
+        "zh-Hans": "白板"
+      },
+      "summary": {
+        "en": "Nothing more Nothing less",
+        "zh-Hans": "界面简洁，上手简易"
+      }
+    },
+    {
+      "iconName": "id6446134877.png",
+      "downloadURL": "https://apps.apple.com/app/id6446134877",
+      "name": {
+        "en": "WyChat AI",
+        "zh-Hans": "WyChat AI"
+      },
+      "summary": {
+        "en": "AI Chat Client",
+        "zh-Hans": "AI Chat 客户端"
+      }
+    }
+  ]
+}
