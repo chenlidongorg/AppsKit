@@ -47,15 +47,20 @@ public struct AppsView: View {
                 appsNavigationView
             }
         }
-        .sheet(isPresented: $isPresentingList) {
-            appsNavigationView
-        }
         .onAppear {
+            
             viewModel.load(baseURL: requesrBaseURL, jsonName: requestJsonName)
         }
         .onReceive(viewModel.$appsModel.compactMap { $0?.active }.removeDuplicates()) { value in
             onActive(value)
         }
+        
+        
+        
+        .sheet(isPresented: $isPresentingList) {
+            appsNavigationView
+        }
+        
     }
 
     private var appsNavigationView: some View {
@@ -132,19 +137,29 @@ final class AppsViewModel: ObservableObject {
     @Published private(set) var state: State = .idle
 
     private var cancellable: AnyCancellable?
+    private let decodeQueue = DispatchQueue(label: "AppsKit.AppsViewModel.decode", qos: .userInitiated)
 
     func load(baseURL: String, jsonName: String) {
         guard state != .loading else { return }
         guard let url = URLBuilder.jsonURL(baseURL: baseURL, jsonName: jsonName) else {
             state = .failed("Invalid JSON URL")
+            appsModel = nil
             return
         }
 
         state = .loading
         cancellable?.cancel()
 
-        cancellable = URLSession.shared.dataTaskPublisher(for: url)
-            .map(\.data)
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 30)
+        cancellable = URLSession.shared.dataTaskPublisher(for: request)
+            .subscribe(on: decodeQueue)
+            .tryMap { output in
+                guard let response = output.response as? HTTPURLResponse,
+                      (200...299).contains(response.statusCode) else {
+                    throw URLError(.badServerResponse)
+                }
+                return output.data
+            }
             .decode(type: AppsModel.self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
