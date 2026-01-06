@@ -173,6 +173,8 @@ final class AppsViewModel: ObservableObject {
                 }
             }, receiveValue: { [weak self] model in
                 self?.appsModel = model
+                
+                print("model:", model)
             })
     }
 }
