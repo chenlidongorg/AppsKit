@@ -1,0 +1,78 @@
+{
+  "Active": true,
+  "apps": [
+    {
+      "iconName": "id6477818201.png",
+      "downloadURL": "https://apps.apple.com/app/id6477818201",
+      "name": {
+        "en": "Linguo - Baby Audio Stories",
+        "zh-Hans": "白鹅 linguo 灵果宝宝 儿童有声故事"
+      },
+      "summary": {
+        "en": "Picture Books with Sound",
+        "zh-Hans": "同步字幕绘本"
+      }
+    },
+    
+    {
+      "iconName": "id6753330109.png",
+      "downloadURL": "https://apps.apple.com/app/id6753330109",
+      "name": {
+        "en": "Linguo Baby - Baby Learning",
+        "zh-Hans": "灵果宝宝 linguo baby 宝宝启蒙"
+      },
+      "summary": {
+        "en": "Interactive fun Joyful growth",
+        "zh-Hans": "趣味互动 快乐成长"
+      }
+    },
+    {
+      "iconName": "id6755411047.png",
+      "downloadURL": "https://apps.apple.com/app/id6755411047",
+      "name": {
+        "en": "Linguo Tap-to-Read",
+        "zh-Hans": "英语点读"
+      },
+      "summary": {
+        "en": "English reader for students",
+        "zh-Hans": "为中小学生打造英语点读助手"
+      }
+    },
+    {
+      "iconName": "id662460932.png",
+      "downloadURL": "https://apps.apple.com/app/id662460932",
+      "name": {
+        "en": "诗经三百篇 - 读书派出品",
+        "zh-Hans": "诗经三百篇 读书派出品"
+      },
+      "summary": {
+        "en": "国学经典有声读物系列",
+        "zh-Hans": "国学经典有声读物系列"
+      }
+    },
+    {
+      "iconName": "id559753391.png",
+      "downloadURL": "https://apps.apple.com/app/id559753391",
+      "name": {
+        "en": "论语二十篇492章 - 读书派出品",
+        "zh-Hans": "论语二十篇492章 读书派出品"
+      },
+      "summary": {
+        "en": "国学经典有声读物系列",
+        "zh-Hans": "国学经典有声读物系列"
+      }
+    },
+    {
+      "iconName": "id534983128.png",
+      "downloadURL": "https://apps.apple.com/app/id534983128",
+      "name": {
+        "en": "国学启蒙有声读物 - 读书派出品",
+        "zh-Hans": "国学启蒙有声读物 读书派出品"
+      },
+      "summary": {
+        "en": "四本经典蒙学无障碍阅读经典",
+        "zh-Hans": "四本经典蒙学无障碍阅读经典"
+      }
+    }
+  ]
+}

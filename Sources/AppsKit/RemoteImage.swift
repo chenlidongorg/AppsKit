@@ -7,13 +7,28 @@ final class ImageLoader: ObservableObject {
     @Published var isLoading = false
 
     private var cancellable: AnyCancellable?
+    private var currentURL: URL?
 
     func load(from url: URL?) {
-        guard !isLoading else { return }
-        guard let url = url else { return }
+        guard let url = url else {
+            cancellable?.cancel()
+            cancellable = nil
+            currentURL = nil
+            image = nil
+            isLoading = false
+            return
+        }
 
+        if url != currentURL {
+            image = nil
+        }
+
+        currentURL = url
+        cancellable?.cancel()
         isLoading = true
-        cancellable = URLSession.shared.dataTaskPublisher(for: url)
+
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 30)
+        cancellable = URLSession.shared.dataTaskPublisher(for: request)
             .map { UIImage(data: $0.data) }
             .replaceError(with: nil)
             .receive(on: DispatchQueue.main)
