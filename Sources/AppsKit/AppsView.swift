@@ -99,7 +99,7 @@ public struct AppsView: View {
             triggerView
         }
         .buttonStyle(PlainButtonStyle())
-        .opacity(viewModel.appsModel?.active == true ? 1.0 : 0.2)
+        .opacity(viewModel.appsModel?.active == true ? 1.0 : 0.01)
         
        /*
         if viewModel.appsModel?.active == true {
