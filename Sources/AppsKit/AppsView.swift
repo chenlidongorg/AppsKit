@@ -6,6 +6,7 @@ import UIKit
 public struct AppsView: View {
     private let requesrBaseURL: String
     private let requestJsonName: String
+    private let activeLongPress:Bool?
     private let triggerView: AnyView?
     private let onActive: (Bool) -> Void
 
@@ -16,11 +17,13 @@ public struct AppsView: View {
     public init(
         requesrBaseURL: String = "https://xxx.com",
         requestJsonName: String = "xxx.json",
+        activeLongPress:Bool? = nil,
         triggerView: AnyView? = nil,
         onActive: @escaping (Bool) -> Void = { _ in }
     ) {
         self.requesrBaseURL = requesrBaseURL
         self.requestJsonName = requestJsonName
+        self.activeLongPress = activeLongPress
         self.triggerView = triggerView
         self.onActive = onActive
         _viewModel = StateObject(wrappedValue: AppsViewModel(baseURL: requesrBaseURL, jsonName: requestJsonName))
@@ -29,11 +32,13 @@ public struct AppsView: View {
     public init<Trigger: View>(
         requesrBaseURL: String = "https://xxx.com",
         requestJsonName: String = "xxx.json",
+        activeLongPress:Bool? = nil,
         @ViewBuilder triggerView: () -> Trigger,
         onActive: @escaping (Bool) -> Void = { _ in }
     ) {
         self.requesrBaseURL = requesrBaseURL
         self.requestJsonName = requestJsonName
+        self.activeLongPress = activeLongPress
         self.triggerView = AnyView(triggerView())
         self.onActive = onActive
         _viewModel = StateObject(wrappedValue: AppsViewModel(baseURL: requesrBaseURL, jsonName: requestJsonName))
@@ -54,9 +59,7 @@ public struct AppsView: View {
         .onReceive(viewModel.$appsModel.compactMap { $0?.active }.removeDuplicates()) { value in
             onActive(value)
         }
-        
-        
-        
+                
         .sheet(isPresented: $isPresentingList) {
             appsNavigationView
         }
@@ -96,27 +99,17 @@ public struct AppsView: View {
     private func triggerButton(_ triggerView: AnyView) -> some View {
         
         if viewModel.appsModel?.active == true {
-            Button(action: { isPresentingList = true }) {
-                triggerView
-            }
-            .buttonStyle(PlainButtonStyle())
-            //.opacity(viewModel.appsModel?.active == true ? 1.0 : 0.01)
+            
+            triggerView
+                .contentShape(Rectangle())
+                .modifier(TriggerGestureModifier(isLongPressOnly: activeLongPress == true) {
+                    isPresentingList = true
+                })
+            
+                
+            
         }
-        
-       /*
-        if viewModel.appsModel?.active == true {
-            
-            Button(action: { isPresentingList = true }) {
-                triggerView
-            }
-            .buttonStyle(PlainButtonStyle())
-            
-        } else {
-            
-            Color.secondary.opacity(0.3)
-                .frame(width: 2, height: 2)
-        }
-        */
+       
     }
 
     private var closeButton: some View {
@@ -131,6 +124,19 @@ public struct AppsView: View {
             isPresentingList = false
         } else {
             presentationMode.wrappedValue.dismiss()
+        }
+    }
+}
+
+private struct TriggerGestureModifier: ViewModifier {
+    let isLongPressOnly: Bool
+    let action: () -> Void
+
+    func body(content: Content) -> some View {
+        if isLongPressOnly {
+            content.onLongPressGesture(minimumDuration: 0.6, perform: action)
+        } else {
+            content.onTapGesture(perform: action)
         }
     }
 }
