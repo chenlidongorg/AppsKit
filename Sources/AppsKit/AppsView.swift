@@ -94,6 +94,14 @@ public struct AppsView: View {
 
     @ViewBuilder
     private func triggerButton(_ triggerView: AnyView) -> some View {
+        
+        Button(action: { isPresentingList = true }) {
+            triggerView
+        }
+        .buttonStyle(PlainButtonStyle())
+        .opacity(viewModel.appsModel?.active == true ? 1.0 : 0.2)
+        
+       /*
         if viewModel.appsModel?.active == true {
             
             Button(action: { isPresentingList = true }) {
@@ -106,6 +114,7 @@ public struct AppsView: View {
             Color.secondary.opacity(0.3)
                 .frame(width: 2, height: 2)
         }
+        */
     }
 
     private var closeButton: some View {
@@ -179,15 +188,26 @@ final class AppsViewModel: ObservableObject {
     }
 }
 
+@available(iOS 14.0, *)
 struct AppsListView: View {
     let apps: [AppModel]
     let baseURL: String
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
+    private var columns: [GridItem] {
+        if horizontalSizeClass == .compact {
+            return [GridItem(.flexible(), spacing: 16)]
+        }
+        return [GridItem(.adaptive(minimum: 280), spacing: 16)]
+    }
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 16) {
+            LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(apps) { app in
                     AppCardView(app: app, baseURL: baseURL)
+                        .frame(maxWidth: horizontalSizeClass == .compact ? .infinity : 420)
+                        .frame(maxWidth: .infinity, alignment: .center)
                 }
             }
             .padding(.horizontal, 16)
