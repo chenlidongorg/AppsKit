@@ -23,7 +23,7 @@ public struct AppsView: View {
         self.requestJsonName = requestJsonName
         self.triggerView = triggerView
         self.onActive = onActive
-        _viewModel = StateObject(wrappedValue: AppsViewModel())
+        _viewModel = StateObject(wrappedValue: AppsViewModel(baseURL: requesrBaseURL, jsonName: requestJsonName))
     }
 
     public init<Trigger: View>(
@@ -36,7 +36,7 @@ public struct AppsView: View {
         self.requestJsonName = requestJsonName
         self.triggerView = AnyView(triggerView())
         self.onActive = onActive
-        _viewModel = StateObject(wrappedValue: AppsViewModel())
+        _viewModel = StateObject(wrappedValue: AppsViewModel(baseURL: requesrBaseURL, jsonName: requestJsonName))
     }
 
     public var body: some View {
@@ -49,7 +49,7 @@ public struct AppsView: View {
         }
         .onAppear {
             print("load(baseURL onAppear ")
-            viewModel.load(baseURL: requesrBaseURL, jsonName: requestJsonName)
+            viewModel.loadIfNeeded(baseURL: requesrBaseURL, jsonName: requestJsonName)
         }
         .onReceive(viewModel.$appsModel.compactMap { $0?.active }.removeDuplicates()) { value in
             onActive(value)
@@ -95,11 +95,13 @@ public struct AppsView: View {
     @ViewBuilder
     private func triggerButton(_ triggerView: AnyView) -> some View {
         
-        Button(action: { isPresentingList = true }) {
-            triggerView
+        if viewModel.appsModel?.active == true {
+            Button(action: { isPresentingList = true }) {
+                triggerView
+            }
+            .buttonStyle(PlainButtonStyle())
+            //.opacity(viewModel.appsModel?.active == true ? 1.0 : 0.01)
         }
-        .buttonStyle(PlainButtonStyle())
-        .opacity(viewModel.appsModel?.active == true ? 1.0 : 0.01)
         
        /*
         if viewModel.appsModel?.active == true {
@@ -145,6 +147,17 @@ final class AppsViewModel: ObservableObject {
 
     private var cancellable: AnyCancellable?
     private let decodeQueue = DispatchQueue(label: "AppsKit.AppsViewModel.decode", qos: .userInitiated)
+
+    init(baseURL: String, jsonName: String) {
+        DispatchQueue.main.async { [weak self] in
+            self?.load(baseURL: baseURL, jsonName: jsonName)
+        }
+    }
+
+    func loadIfNeeded(baseURL: String, jsonName: String) {
+        guard appsModel == nil else { return }
+        load(baseURL: baseURL, jsonName: jsonName)
+    }
 
     func load(baseURL: String, jsonName: String) {
         
