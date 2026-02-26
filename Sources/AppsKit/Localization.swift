@@ -22,19 +22,71 @@ public struct LocalizedInfo {
 }
 
 enum LanguageResolver {
+    private static func normalizedLanguageCode(_ code: String) -> String {
+        code
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .replacingOccurrences(of: "_", with: "-")
+            .lowercased()
+    }
+
+    private static func appendUnique(_ value: String, to results: inout [String], seen: inout Set<String>) {
+        guard !value.isEmpty, !seen.contains(value) else { return }
+        results.append(value)
+        seen.insert(value)
+    }
+
+    private static func candidateCodes(for rawCode: String) -> [String] {
+        let normalized = normalizedLanguageCode(rawCode)
+        guard !normalized.isEmpty else { return [] }
+
+        var results: [String] = []
+        var seen = Set<String>()
+
+        appendUnique(normalized, to: &results, seen: &seen)
+
+        let parts = normalized.split(separator: "-").map(String.init)
+        if parts.count > 1 {
+            for end in stride(from: parts.count - 1, through: 1, by: -1) {
+                appendUnique(parts[0..<end].joined(separator: "-"), to: &results, seen: &seen)
+            }
+        }
+
+        if let language = parts.first, language == "zh" {
+            let tokens = Set(parts.dropFirst())
+            let simplifiedRegions: Set<String> = ["cn", "sg"]
+            let traditionalRegions: Set<String> = ["tw", "hk", "mo"]
+
+            if tokens.contains("hans") || !tokens.intersection(simplifiedRegions).isEmpty {
+                appendUnique("zh-hans", to: &results, seen: &seen)
+                appendUnique("zh-cn", to: &results, seen: &seen)
+            }
+
+            if tokens.contains("hant") || !tokens.intersection(traditionalRegions).isEmpty {
+                appendUnique("zh-hant", to: &results, seen: &seen)
+                appendUnique("zh-tw", to: &results, seen: &seen)
+                appendUnique("zh-hk", to: &results, seen: &seen)
+            }
+
+            appendUnique("zh", to: &results, seen: &seen)
+        }
+
+        return results
+    }
+
     static func preferredLanguageCodes() -> [String] {
         var results: [String] = []
         var seen = Set<String>()
 
-        for language in Locale.preferredLanguages {
-            let normalized = language.replacingOccurrences(of: "_", with: "-").lowercased()
-            let candidates = [normalized, normalized.split(separator: "-").first.map(String.init)].compactMap { $0 }
+        let languageSources: [String] =
+            Bundle.main.preferredLocalizations +
+            Bundle.module.preferredLocalizations +
+            (UserDefaults.standard.array(forKey: "AppleLanguages") as? [String] ?? []) +
+            Locale.preferredLanguages +
+            [Locale.autoupdatingCurrent.identifier, Locale.current.identifier]
 
-            for code in candidates {
-                if !seen.contains(code) {
-                    results.append(code)
-                    seen.insert(code)
-                }
+        for language in languageSources {
+            for code in candidateCodes(for: language) {
+                appendUnique(code, to: &results, seen: &seen)
             }
         }
 
@@ -44,7 +96,14 @@ enum LanguageResolver {
     static func localizedString(from map: [String: String]) -> String {
         guard !map.isEmpty else { return "" }
 
-        let normalizedMap = Dictionary(uniqueKeysWithValues: map.map { ($0.key.lowercased(), $0.value) })
+        var normalizedMap: [String: String] = [:]
+        for (key, value) in map {
+            let normalizedKey = normalizedLanguageCode(key)
+            guard !normalizedKey.isEmpty else { continue }
+            if normalizedMap[normalizedKey] == nil {
+                normalizedMap[normalizedKey] = value
+            }
+        }
 
         for code in preferredLanguageCodes() {
             if let value = normalizedMap[code] {
