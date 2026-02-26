@@ -6,11 +6,29 @@
       "downloadURL": "https://apps.apple.com/app/id496465537",
       "name": {
         "en": "Whiteboard",
-        "zh-Hans": "白板"
+        "zh-Hans": "白板",
+        "zh-Hant": "白板",
+        "ja": "ホワイトボード",
+        "ko": "화이트보드",
+        "fr": "Tableau blanc",
+        "de": "Whiteboard",
+        "es": "Pizarra",
+        "pt": "Quadro branco",
+        "ar": "السبورة البيضاء",
+        "ru": "Белая доска"
       },
       "summary": {
         "en": "Nothing more Nothing less",
-        "zh-Hans": "界面简洁，上手简易"
+        "zh-Hans": "界面简洁，上手简易",
+        "zh-Hant": "介面簡潔，上手容易",
+        "ja": "シンプルで、すぐ使える",
+        "ko": "간결한 화면, 쉬운 사용",
+        "fr": "Simple, sans superflu",
+        "de": "Einfach, nicht mehr und nicht weniger",
+        "es": "Nada más, nada menos",
+        "pt": "Nada mais, nada menos",
+        "ar": "لا أكثر ولا أقل",
+        "ru": "Ничего лишнего, ничего недостающего"
       }
     },
     {
@@ -18,11 +36,29 @@
       "downloadURL": "https://apps.apple.com/app/id6757687599",
       "name": {
         "en": "PetPals - Pet Circle",
-        "zh-Hans": "宠物圈"
+        "zh-Hans": "宠物圈",
+        "zh-Hant": "寵物圈",
+        "ja": "PetPals - ペットサークル",
+        "ko": "PetPals - 펫 서클",
+        "fr": "PetPals - Cercle des animaux",
+        "de": "PetPals - Haustierkreis",
+        "es": "PetPals - Círculo de Mascotas",
+        "pt": "PetPals - Círculo dos Pets",
+        "ar": "PetPals - دائرة الحيوانات الأليفة",
+        "ru": "PetPals - Круг питомцев"
       },
       "summary": {
         "en": "Draw Pets, Play Together",
-        "zh-Hans": "画萌宠，一起玩"
+        "zh-Hans": "画萌宠，一起玩",
+        "zh-Hant": "畫萌寵，一起玩",
+        "ja": "ペットを描いて、一緒に遊ぼう",
+        "ko": "반려동물을 그리고 함께 놀아요",
+        "fr": "Dessinez des animaux, jouez ensemble",
+        "de": "Haustiere zeichnen, zusammen spielen",
+        "es": "Dibuja mascotas y juega juntos",
+        "pt": "Desenhe pets e brinquem juntos",
+        "ar": "ارسم الحيوانات الأليفة والعبوا معًا",
+        "ru": "Рисуйте питомцев и играйте вместе"
       }
     },
     {
@@ -30,11 +66,29 @@
       "downloadURL": "https://apps.apple.com/app/id6446134877",
       "name": {
         "en": "WyChat AI",
-        "zh-Hans": "WyChat AI"
+        "zh-Hans": "WyChat AI",
+        "zh-Hant": "WyChat AI",
+        "ja": "WyChat AI",
+        "ko": "WyChat AI",
+        "fr": "WyChat AI",
+        "de": "WyChat AI",
+        "es": "WyChat AI",
+        "pt": "WyChat AI",
+        "ar": "WyChat AI",
+        "ru": "WyChat AI"
       },
       "summary": {
         "en": "AI Chat Client",
-        "zh-Hans": "AI Chat 客户端"
+        "zh-Hans": "AI Chat 客户端",
+        "zh-Hant": "AI Chat 客戶端",
+        "ja": "AIチャットクライアント",
+        "ko": "AI 채팅 클라이언트",
+        "fr": "Client de chat IA",
+        "de": "KI-Chat-Client",
+        "es": "Cliente de chat con IA",
+        "pt": "Cliente de chat com IA",
+        "ar": "عميل دردشة بالذكاء الاصطناعي",
+        "ru": "Клиент ИИ-чата"
       }
     }
   ]

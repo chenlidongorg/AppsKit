@@ -6,24 +6,59 @@
       "downloadURL": "https://apps.apple.com/app/id6477818201",
       "name": {
         "en": "Linguo - Baby Audio Stories",
-        "zh-Hans": "白鹅 linguo 灵果宝宝 儿童有声故事"
+        "zh-Hans": "白鹅 linguo 灵果宝宝 儿童有声故事",
+        "zh-Hant": "白鵝 linguo 靈果寶寶 兒童有聲故事",
+        "ja": "Linguo - ベビー向け音声ストーリー",
+        "ko": "Linguo - 아기 오디오 동화",
+        "fr": "Linguo - Histoires audio pour bébés",
+        "de": "Linguo - Audio-Geschichten für Babys",
+        "es": "Linguo - Historias de audio para bebés",
+        "pt": "Linguo - Histórias em áudio para bebês",
+        "ar": "Linguo - قصص صوتية للأطفال الرضع",
+        "ru": "Linguo - Аудиоистории для малышей"
       },
       "summary": {
         "en": "Picture Books with Sound",
-        "zh-Hans": "同步字幕绘本"
+        "zh-Hans": "同步字幕绘本",
+        "zh-Hant": "同步字幕繪本",
+        "ja": "音声付き絵本",
+        "ko": "소리와 함께하는 그림책",
+        "fr": "Livres illustrés avec audio",
+        "de": "Bilderbücher mit Ton",
+        "es": "Libros ilustrados con sonido",
+        "pt": "Livros ilustrados com áudio",
+        "ar": "كتب مصوّرة مع صوت",
+        "ru": "Книги с картинками и озвучкой"
       }
     },
-    
     {
       "iconName": "id6753330109.png",
       "downloadURL": "https://apps.apple.com/app/id6753330109",
       "name": {
         "en": "Linguo Baby - Baby Learning",
-        "zh-Hans": "灵果宝宝 linguo baby 宝宝启蒙"
+        "zh-Hans": "灵果宝宝 linguo baby 宝宝启蒙",
+        "zh-Hant": "靈果寶寶 linguo baby 寶寶啟蒙",
+        "ja": "Linguo Baby - 幼児向け学習",
+        "ko": "Linguo Baby - 아기 학습",
+        "fr": "Linguo Baby - Apprentissage pour bébés",
+        "de": "Linguo Baby - Lernen für Babys",
+        "es": "Linguo Baby - Aprendizaje para bebés",
+        "pt": "Linguo Baby - Aprendizagem para bebês",
+        "ar": "Linguo Baby - تعلّم الرضع",
+        "ru": "Linguo Baby - Обучение для малышей"
       },
       "summary": {
         "en": "Interactive fun Joyful growth",
-        "zh-Hans": "趣味互动 快乐成长"
+        "zh-Hans": "趣味互动 快乐成长",
+        "zh-Hant": "趣味互動 快樂成長",
+        "ja": "楽しいインタラクション、すこやかな成長",
+        "ko": "재미있는 상호작용, 즐거운 성장",
+        "fr": "Interaction ludique, croissance joyeuse",
+        "de": "Interaktiver Spaß, freudiges Wachstum",
+        "es": "Diversión interactiva, crecimiento feliz",
+        "pt": "Diversão interativa, crescimento feliz",
+        "ar": "تفاعل ممتع ونمو سعيد",
+        "ru": "Интерактивное веселье, радостный рост"
       }
     },
     {
@@ -31,11 +66,29 @@
       "downloadURL": "https://apps.apple.com/app/id6755411047",
       "name": {
         "en": "Linguo Tap-to-Read",
-        "zh-Hans": "英语点读"
+        "zh-Hans": "英语点读",
+        "zh-Hant": "英語點讀",
+        "ja": "Linguo タップで読む",
+        "ko": "Linguo 탭해서 읽기",
+        "fr": "Linguo Tap-to-Read",
+        "de": "Linguo Tap-to-Read",
+        "es": "Linguo Toca para leer",
+        "pt": "Linguo Toque para ler",
+        "ar": "Linguo - المس للقراءة",
+        "ru": "Linguo: Нажми, чтобы читать"
       },
       "summary": {
         "en": "Scan English textbook pages for clear audio so students can read along at home",
-        "zh-Hans": "为中小学生打造英语点读助手"
+        "zh-Hans": "为中小学生打造英语点读助手",
+        "zh-Hant": "為中小學生打造英語點讀助手",
+        "ja": "英語教科書のページをスキャンしてクリアな音声を再生。家庭学習の音読に役立ちます",
+        "ko": "영어 교과서 페이지를 스캔해 또렷한 음성을 재생하고 집에서도 따라 읽기 학습을 할 수 있어요",
+        "fr": "Scannez les pages de manuels d’anglais pour un audio clair afin que les élèves puissent lire à voix haute à la maison",
+        "de": "Scannen Sie Englischbuchseiten für klare Audioausgabe, damit Schüler zu Hause mitlesen können",
+        "es": "Escanea páginas de libros de inglés para obtener audio claro y que los estudiantes puedan leer en voz alta en casa",
+        "pt": "Escaneie páginas de livros de inglês para obter áudio nítido e ajudar os alunos a acompanhar a leitura em casa",
+        "ar": "امسح صفحات كتب الإنجليزية لتحصل على صوت واضح يساعد الطلاب على القراءة والمتابعة في المنزل",
+        "ru": "Сканируйте страницы учебников английского и получайте четкое аудио, чтобы ученики могли читать вслух дома"
       }
     },
     {
@@ -43,11 +96,29 @@
       "downloadURL": "https://apps.apple.com/app/id6759525679",
       "name": {
         "en": "Trace Drawing app",
-        "zh-Hans": "绘画描摹本"
+        "zh-Hans": "绘画描摹本",
+        "zh-Hant": "繪畫描摹本",
+        "ja": "なぞり描きアプリ",
+        "ko": "따라 그리기 앱",
+        "fr": "Application de dessin par tracé",
+        "de": "Nachzeichnungs-App",
+        "es": "App de dibujo por calco",
+        "pt": "App de desenho por traçado",
+        "ar": "تطبيق الرسم بالتتبع",
+        "ru": "Приложение для рисования по контуру"
       },
       "summary": {
         "en": "Trace characters with 4 themed templates (Girls, Boys, Ancient, Chibi)",
-        "zh-Hans": "人物临摹练习：美少女·美少男·古风·Q版"
+        "zh-Hans": "人物临摹练习：美少女·美少男·古风·Q版",
+        "zh-Hant": "人物臨摹練習：美少女・美少男・古風・Q版",
+        "ja": "4つのテーマ（女の子・男の子・古風・ちび）で人物をなぞって練習",
+        "ko": "4가지 테마(소녀, 소년, 고풍, 치비) 템플릿으로 인물 따라 그리기 연습",
+        "fr": "Entraînez-vous à tracer des personnages avec 4 thèmes (filles, garçons, ancien, chibi)",
+        "de": "Figuren mit 4 Vorlagen-Themen nachzeichnen (Mädchen, Jungen, klassisch, Chibi)",
+        "es": "Practica calco de personajes con 4 plantillas temáticas (chicas, chicos, estilo antiguo y chibi)",
+        "pt": "Pratique traçado de personagens com 4 temas (meninas, meninos, clássico e chibi)",
+        "ar": "تدرّب على تتبّع الشخصيات عبر 4 قوالب (بنات، أولاد، طابع تراثي، تشيبي)",
+        "ru": "Тренируйтесь обводить персонажей по 4 шаблонам (девочки, мальчики, классический стиль, чиби)"
       }
     },
     {
@@ -55,11 +126,29 @@
       "downloadURL": "https://apps.apple.com/app/id662460932",
       "name": {
         "en": "诗经三百篇 - 读书派出品",
-        "zh-Hans": "诗经三百篇 读书派出品"
+        "zh-Hans": "诗经三百篇 读书派出品",
+        "zh-Hant": "詩經三百篇 讀書派出品",
+        "ja": "詩経三百篇 - 読書派制作",
+        "ko": "시경 300편 - 독서파 제작",
+        "fr": "Les 300 poèmes du Classique des vers - Édition Dushupai",
+        "de": "Shijing: 300 Gedichte - von Dushupai",
+        "es": "Shijing: 300 poemas - producido por Dushupai",
+        "pt": "Shijing: 300 poemas - produzido por Dushupai",
+        "ar": "شيجينغ: 300 قصيدة - من إنتاج Dushupai",
+        "ru": "Шицзин: 300 стихотворений — от Dushupai"
       },
       "summary": {
         "en": "国学经典有声读物系列",
-        "zh-Hans": "国学经典有声读物系列"
+        "zh-Hans": "国学经典有声读物系列",
+        "zh-Hant": "國學經典有聲讀物系列",
+        "ja": "国学古典のオーディオブックシリーズ",
+        "ko": "중국 고전 학습 오디오북 시리즈",
+        "fr": "Série de livres audio des classiques chinois",
+        "de": "Hörbuchreihe chinesischer Klassiker",
+        "es": "Serie de audiolibros de clásicos chinos",
+        "pt": "Série de audiolivros de clássicos chineses",
+        "ar": "سلسلة كتب صوتية للكلاسيكيات الصينية",
+        "ru": "Серия аудиокниг по классике китайской литературы"
       }
     },
     {
@@ -67,11 +156,29 @@
       "downloadURL": "https://apps.apple.com/app/id559753391",
       "name": {
         "en": "论语二十篇492章 - 读书派出品",
-        "zh-Hans": "论语二十篇492章 读书派出品"
+        "zh-Hans": "论语二十篇492章 读书派出品",
+        "zh-Hant": "論語二十篇492章 讀書派出品",
+        "ja": "論語 二十篇492章 - 読書派制作",
+        "ko": "논어 20편 492장 - 독서파 제작",
+        "fr": "Les Entretiens de Confucius (20 chapitres, 492 sections) - Édition Dushupai",
+        "de": "Analekten (20 Kapitel, 492 Abschnitte) - von Dushupai",
+        "es": "Analectas (20 capítulos, 492 secciones) - producido por Dushupai",
+        "pt": "Analectos (20 capítulos, 492 trechos) - produzido por Dushupai",
+        "ar": "مقولات كونفوشيوس (20 فصلاً، 492 مقطعًا) - من إنتاج Dushupai",
+        "ru": "Лунь юй (20 глав, 492 раздела) — от Dushupai"
       },
       "summary": {
         "en": "国学经典有声读物系列",
-        "zh-Hans": "国学经典有声读物系列"
+        "zh-Hans": "国学经典有声读物系列",
+        "zh-Hant": "國學經典有聲讀物系列",
+        "ja": "国学古典のオーディオブックシリーズ",
+        "ko": "중국 고전 학습 오디오북 시리즈",
+        "fr": "Série de livres audio des classiques chinois",
+        "de": "Hörbuchreihe chinesischer Klassiker",
+        "es": "Serie de audiolibros de clásicos chinos",
+        "pt": "Série de audiolivros de clássicos chineses",
+        "ar": "سلسلة كتب صوتية للكلاسيكيات الصينية",
+        "ru": "Серия аудиокниг по классике китайской литературы"
       }
     },
     {
@@ -79,11 +186,29 @@
       "downloadURL": "https://apps.apple.com/app/id534983128",
       "name": {
         "en": "国学启蒙有声读物 - 读书派出品",
-        "zh-Hans": "国学启蒙有声读物 读书派出品"
+        "zh-Hans": "国学启蒙有声读物 读书派出品",
+        "zh-Hant": "國學啟蒙有聲讀物 讀書派出品",
+        "ja": "国学入門オーディオブック - 読書派制作",
+        "ko": "국학 입문 오디오북 - 독서파 제작",
+        "fr": "Livre audio d’initiation aux classiques chinois - Édition Dushupai",
+        "de": "Einführungs-Hörbuch zu chinesischen Klassikern - von Dushupai",
+        "es": "Audiolibro de iniciación a los clásicos chinos - producido por Dushupai",
+        "pt": "Audiolivro introdutório aos clássicos chineses - produzido por Dushupai",
+        "ar": "كتاب صوتي تمهيدي للكلاسيكيات الصينية - من إنتاج Dushupai",
+        "ru": "Вводная аудиокнига по китайской классике — от Dushupai"
       },
       "summary": {
         "en": "四本经典蒙学无障碍阅读经典",
-        "zh-Hans": "四本经典蒙学无障碍阅读经典"
+        "zh-Hans": "四本经典蒙学无障碍阅读经典",
+        "zh-Hant": "四本經典蒙學無障礙閱讀經典",
+        "ja": "4つの定番蒙学を読みやすく収録",
+        "ko": "4권의 고전 아동 입문서를 쉽게 읽을 수 있게 수록",
+        "fr": "Lecture accessible de quatre classiques d’initiation",
+        "de": "Barrierearmes Lesen von vier klassischen Einführungswerken",
+        "es": "Lectura accesible de cuatro clásicos de iniciación",
+        "pt": "Leitura acessível de quatro clássicos de iniciação",
+        "ar": "قراءة ميسّرة لأربعة من كلاسيكيات التعليم التمهيدي",
+        "ru": "Доступное чтение четырех классических учебных текстов для начального обучения"
       }
     }
   ]
