@@ -5,7 +5,7 @@ public struct AppModel: Codable, Hashable, Identifiable {
     public let downloadURL: String
     public let name: [String: String]
     public let summary: [String: String]
-
+    
     public var id: String { downloadURL }
 
     public init(iconName: String, downloadURL: String, name: [String: String], summary: [String: String]) {

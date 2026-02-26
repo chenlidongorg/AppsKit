@@ -27,18 +27,6 @@
       }
     },
     {
-      "iconName": "id1609331842.png",
-      "downloadURL": "https://apps.apple.com/app/id1609331842",
-      "name": {
-        "en": "人教版小学英语",
-        "zh-Hans": "人教版小学英语"
-      },
-      "summary": {
-        "en": "点哪读哪，影子学习法",
-        "zh-Hans": "点哪读哪，影子学习法"
-      }
-    },
-    {
       "iconName": "id6755411047.png",
       "downloadURL": "https://apps.apple.com/app/id6755411047",
       "name": {
@@ -46,8 +34,20 @@
         "zh-Hans": "英语点读"
       },
       "summary": {
-        "en": "English reader for students",
+        "en": "Scan English textbook pages for clear audio so students can read along at home",
         "zh-Hans": "为中小学生打造英语点读助手"
+      }
+    },
+    {
+      "iconName": "id6759525679.png",
+      "downloadURL": "https://apps.apple.com/app/id6759525679",
+      "name": {
+        "en": "Trace Drawing app",
+        "zh-Hans": "绘画描摹本"
+      },
+      "summary": {
+        "en": "Trace characters with 4 themed templates (Girls, Boys, Ancient, Chibi)",
+        "zh-Hans": "人物临摹练习：美少女·美少男·古风·Q版"
       }
     },
     {
