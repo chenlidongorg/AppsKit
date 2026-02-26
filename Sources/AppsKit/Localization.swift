@@ -78,11 +78,26 @@ enum LanguageResolver {
         var seen = Set<String>()
 
         let languageSources: [String] =
-            Bundle.main.preferredLocalizations +
-            Bundle.module.preferredLocalizations +
             (UserDefaults.standard.array(forKey: "AppleLanguages") as? [String] ?? []) +
             Locale.preferredLanguages +
             [Locale.autoupdatingCurrent.identifier, Locale.current.identifier]
+
+        for language in languageSources {
+            for code in candidateCodes(for: language) {
+                appendUnique(code, to: &results, seen: &seen)
+            }
+        }
+
+        return results
+    }
+
+    static func bundleFallbackLanguageCodes() -> [String] {
+        var results: [String] = []
+        var seen = Set<String>()
+
+        let languageSources: [String] =
+            Bundle.main.preferredLocalizations +
+            Bundle.module.preferredLocalizations
 
         for language in languageSources {
             for code in candidateCodes(for: language) {
@@ -113,6 +128,14 @@ enum LanguageResolver {
 
         if let english = normalizedMap["en"] {
             return english
+        }
+
+        // As a last resort, allow bundle-level localization fallback (e.g. host app/package bundles).
+        // This must come after English fallback because bundle preferredLocalizations may already be a fallback.
+        for code in bundleFallbackLanguageCodes() {
+            if let value = normalizedMap[code] {
+                return value
+            }
         }
 
         return normalizedMap.values.first ?? ""
